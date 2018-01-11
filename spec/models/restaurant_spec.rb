@@ -22,4 +22,11 @@ RSpec.describe Restaurant, type: :model do
       expect(FactoryBot.create(:restaurant)).to be_valid
     end
   end
+
+  before do
+    FactoryBot.create(:restaurant)
+  end
+  it 'responds to full_address' do
+    expect(Restaurant.first).to respond_to(:full_address)
+  end
 end
