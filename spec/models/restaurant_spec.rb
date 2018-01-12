@@ -23,10 +23,13 @@ RSpec.describe Restaurant, type: :model do
     end
   end
 
-  before do
-    FactoryBot.create(:restaurant)
-  end
-  it 'responds to full_address' do
-    expect(Restaurant.first).to respond_to(:full_address)
+  describe '#full_address' do
+    subject {FactoryBot.create(:restaurant, street_address: 'Båtsmansdalsgatan 7',
+                                            city: 'Gothenburg',
+                                            post_code: '424 30')}
+
+    it 'sets the full_address using geocoder' do
+      expect(subject.full_address).to eq 'Båtsmansdalsgatan 7, 424 32 Angered, Sweden'
+    end
   end
 end
