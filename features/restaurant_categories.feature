@@ -9,21 +9,17 @@ Feature: User can see restaurant sorted by categories
       | Chinese         |
       | Thai            |
       | French          |
-      | Italian         |
 
-    And the following restaurants exist
-      | name              |
-      | Thomas Kebabrulle |
-      | Oliver's Burger   |
-      | Borat's Palace    |
+    And these restaurants with respective categories exist
+      | name              | category |
+      | Thomas Kebabrulle | Chinese  |
+      | Oliver's Burger   | Thai     |
+      | Borat's Palace    | French   |
 
 
   Scenario:
     When I visit the landing page
-    Then show me the page
     Then I would like to see "Thomas Kebabrulle" in the "Chinese" category
-    And I would like to see "Oliver's Burger" in the "Chinese" category
-    And I would like to see "Borat's Palace" in the "Chinese" category
-    # And I would like to see "Thai"
-    # And I would like to see "French"
-    # And I would like to see "Italian"
+    And I would like to see "Oliver's Burger" in the "Thai" category
+    And I would like to see "Borat's Palace" in the "French" category
+    Then show me the page

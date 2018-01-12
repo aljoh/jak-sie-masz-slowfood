@@ -1,16 +1,10 @@
 <h1>Jak sie masz</h1>
 <p>What do you feel like tonight?</p>
 
-<% RestaurantCategory.all.group_by(&:name).each do |restaurant_category, name| %>
-  <div id="restaurant_category-<%= restaurant_category.name %>">
-  <%= "#{restaurant_category.name}" %>
-  </div>
-<% end %>
-
 <% @restaurant_categories.each do |restaurant_category| %>
   <div id="restaurant_category-<%= restaurant_category.name %>">
     <%= "#{restaurant_category.name}" %>
-    <% @restaurants.each do |restaurant| %>
+    <% restaurant_category.restaurants.each do |restaurant| %>
       <div id="restaurant-<%= restaurant.id %>">
         <%= "#{restaurant.name}" %>
         <%= link_to 'Show page', restaurant_path(restaurant) %>
