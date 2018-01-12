@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Restaurant, type: :model do
   describe 'DB Table' do
     it { is_expected.to have_db_column :name }
+    it { is_expected.to have_db_column :description }
     it { is_expected.to have_db_column :city }
     it { is_expected.to have_db_column :post_code }
     it { is_expected.to have_db_column :street_address }
@@ -12,6 +13,7 @@ RSpec.describe Restaurant, type: :model do
 
   describe 'Validations' do
     it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_presence_of :description}
     it { is_expected.to validate_presence_of :city }
     it { is_expected.to validate_presence_of :post_code }
     it { is_expected.to validate_presence_of :street_address }

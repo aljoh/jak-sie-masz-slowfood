@@ -1,5 +1,5 @@
 class Restaurant < ApplicationRecord
-  validates :name, :city, :post_code, :street_address, presence: true
+  validates :name, :description, :city, :post_code, :street_address, presence: true
   geocoded_by :full_address
   after_validation :geocode
 
