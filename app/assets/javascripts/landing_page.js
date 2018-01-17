@@ -1,12 +1,17 @@
 function initiateMap() {
-  var coords;
+
   if (document.body.dataset.env === 'test') {
-    coords = JSON.parse(document.getElementById('fake_position').content);
+    var pos = JSON.parse(document.getElementById('fake_position').content);
+    displayMap(pos)
   } else {
-    navigator.geolocation.getCurrentPosition(function(resp){
-      coords = resp.coords;
-    })
+      navigator.geolocation.getCurrentPosition(displayMap);
   }
+
+}
+
+function displayMap(pos) {
+    var coords = pos.coords;
+    console.log(pos.coords);
     map = GMaps({
         div: '#map',
         zoom: 12,
